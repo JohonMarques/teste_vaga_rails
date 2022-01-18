@@ -1,0 +1,1 @@
+json.array! @relatedproducts, partial: 'related_products/related_product', as: :related_product
