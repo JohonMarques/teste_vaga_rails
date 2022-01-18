@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page] || 1).per(params[:per] || 20)
   end
 
   def show; end
