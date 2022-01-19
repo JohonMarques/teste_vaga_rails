@@ -39,9 +39,9 @@ class RelatedProductsController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   @related_product.destroy
-  # end
+  def destroy
+    @related_product.destroy
+  end
 
   private
 
