@@ -31,13 +31,13 @@ class RelatedProductsController < ApplicationController
 
   end
 
-  # def update
-  #   if@related_product.update(related_product_params)
-  #     render :show, status: :ok, location: @related_product
-  #   else
-  #     render json: { errors: @related_product.errors.full_messages }, status: :unprocessable_entity
-  #   end
-  # end
+  def update
+    if@related_product.update(related_product_params)
+      render :show, status: :ok, location: product_related_products_path
+    else
+      render json: { errors: @related_product.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     @related_product.destroy
