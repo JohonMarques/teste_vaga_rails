@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :related_product do
-    name { "MyString" }
-    price { "9.99" }
-    product { nil }
+    product { Product.first || association(:product) }
+    name { Faker::Commerce.product_name }
+    price { Faker::Commerce.price }
   end
 end
