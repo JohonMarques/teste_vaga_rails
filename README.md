@@ -112,17 +112,33 @@ rspec -f doc
 
 ## API Documentation
 - Product
+  - [Paginate](#paginate-products)
   - [list](#list-products)
   - [get details](#get-product-details)
   - [create](#create-a-product)
   - [update](#update-a-product)
   - [delete](#delete-a-product)
-  
+
 - Related Product
   - [get details](#get-related-product-details)
   - [create](#create-a-related-product)
   - [update](#update-a-related-product)
   - [delete](#delete-a-related-product)
+
+### Paginate Products
+
+Ir para outra página
+
+```
+GET /products?page=2
+```
+
+Quantidade de Produtos por página
+
+```
+GET /products?per=100
+```
+
 
 ### List Products
 ```
