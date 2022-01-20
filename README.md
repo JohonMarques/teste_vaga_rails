@@ -117,6 +117,12 @@ rspec -f doc
   - [create](#create-a-product)
   - [update](#update-a-product)
   - [delete](#delete-a-product)
+  
+- Related Product
+  - [get details](#get-related-product-details)
+  - [create](#create-a-related-product)
+  - [update](#update-a-related-product)
+  - [delete](#delete-a-related-product)
 
 ### List Products
 ```
@@ -152,7 +158,14 @@ GET /products/:id
   "price": "10.99",
   "quantity": 50,
   "created_at": "2021-07-05T23:13:17.383Z",
-  "created_at": "2021-07-05T23:13:17.383Z"
+  "created_at": "2021-07-05T23:13:17.383Z",
+  "related_prooducts": [
+    {
+      "id": 22,
+      "name": "Product test",
+      "price": "10.99"
+    }
+  ]
 }
 ```
 
@@ -234,6 +247,94 @@ PUT/PATCH /products
 
 ```
 DELETE /products/:id
+```
+
+```json
+// response body, status: 204
+null
+```
+
+```json
+// response body, status: 404
+{
+  "errors": ["Couldn't find Product with 'id'=22"]
+}
+```
+
+### Get Related Product Details
+
+```
+GET /products/:product_id/related_products/:id
+```
+
+```json
+// response body, status: 200
+{
+  "id": 22,
+  "name": "Product test",
+  "price": "10.99"
+}
+```
+
+### Create a Related Product
+```
+POST /products/:id/related_products
+```
+
+```json
+// request body
+{
+  "related_product_id": 22
+}
+```
+```json
+// response body, status: 201
+{
+  "id": 22,
+  "name": "Product test",
+  "price": "10.99"
+}
+```
+
+```json
+// response body, status: 422
+{
+  "errors": ["Name has already been taken"]
+}
+```
+
+### Update a Related Product
+```
+PUT/PATCH /products/:product_id/related_products/:id
+```
+
+```json
+// request body
+{
+  "name": "NEW name of product test",
+}
+```
+
+```json
+// response body, status: 201
+{
+  "id": 22,
+  "name": "NEW name of product test",
+  "price": "10.99",
+}
+```
+
+```json
+// response body, status: 422
+{
+  "errors": ["Name can't be blank"]
+}
+```
+
+### Delete a Related Product
+
+```
+DELETE /products/:product_id/related_products/:id
 ```
 
 ```json
